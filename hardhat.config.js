@@ -1,6 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
 require('dotenv').config()
-console.log(process.env)
+
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -10,6 +10,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+
+const {NEXT_PUBLIC_PRIVATE_KEY, NEXT_PUBLIC_INFURA_URL} = process.env
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -21,8 +23,8 @@ module.exports = {
   solidity: "0.8.10",
   networks:{
     rinkeby:{
-      url:"process.env.NEXT_PUBLIC_PROVIDER",
-      accounts:["process.env.NEXT_PUBLIC_PRIVATE_KEY"]
+      url: NEXT_PUBLIC_INFURA_URL,
+      accounts:[`0x${NEXT_PUBLIC_PRIVATE_KEY}`]
     }
   }
 };
