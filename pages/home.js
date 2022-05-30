@@ -1,6 +1,6 @@
 import {useState, useContext, useEffect} from 'react'
 import { WalletContext } from "../utils/WalletContext"
-import TokenCreator from "../artifacts/contracts/TokenCreator.sol/TokenCreator.json"
+import TokenCreator from "../utils/TokenCreator"
 import {ethers} from "ethers"
 import Link from 'next/link'
 const Home = () => {
@@ -67,7 +67,7 @@ useEffect(() =>{console.log(wallet)},[wallet])
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="tokenSymbol" type="number" placeholder="Token Symbol"  onChange={e => setTotalSupply(Number(e.target.value))} />
     </div>
-    <button className="border border:black-500 p-5 hover:bg-red-50" onClick={handleSubmit} disabled={loading}>{loading? 'Creating': 'Create'} </button>
+    <button className="border border:black-500 p-5 hover:bg-red-50" onClick={handleSubmit} disabled={loading}>{loading? 'Creating...': 'Create'} </button>
     {tokenAddress && <div className="bg-blue-500 p-2 text-white mt-2 rounded"> Pls Note Your Contract Address. Check Out Your Token. <Link className="text-blue-500" href={`https://rinkeby.etherscan.io/tx/${tokenAddress}`}>Here 👈</Link>  </div>}
 </div>
     )
