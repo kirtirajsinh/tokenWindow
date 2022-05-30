@@ -1,9 +1,9 @@
-import React, {useState, useContext, useEffect} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import { WalletContext } from "../utils/WalletContext"
 import TokenCreator from "../artifacts/contracts/TokenCreator.sol/TokenCreator.json"
 import {ethers} from "ethers"
 import Link from 'next/link'
-const home = () => {
+const Home = () => {
     const [tokenSymbol , setTokenSymbol] = useState("");
     const [communityName, setCommunityName] = useState("");
     const [totalSupply, setTotalSupply] = useState();
@@ -73,4 +73,4 @@ useEffect(() =>{console.log(wallet)},[wallet])
     )
 }
 
-export default home
+export default Home
